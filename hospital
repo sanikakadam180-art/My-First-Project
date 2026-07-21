@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swamini Hospital | स्वामिनी हॉस्पिटल</title>
+    <style>
+        /* --- CSS STYLING --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #00a8cc;
+            --dark-color: #2c3e50;
+            --light-color: #f8f9fa;
+            --danger-color: #dc3545;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .emergency-btn {
+            background-color: var(--danger-color);
+            color: white !important;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 86, 179, 0.7), rgba(0, 168, 204, 0.7)), url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 45px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        .cta-btn {
+            background-color: #fff;
+            color: var(--primary-color);
+            padding: 12px 25px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Section Commons */
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 10px auto 0;
+        }
+
+        /* Facilities Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        /* Appointment Form */
+        .appointment-section {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid, .nav-container { flex-direction: column; grid-template-columns: 1fr; }
+            .nav-links { margin-top: 15px; flex-wrap: wrap; justify-content: center; }
+            .hero-content h1 { font-size: 32px; }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .submit-btn {
+            grid-column: 1 / -1;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #004085;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <nav class="nav-container">
+            <div class="logo">🏥 Swamini Hospital</div>
+            <ul class="nav-links">
+                <li><a href="#home">होम</a></li>
+                <li><a href="#facilities">सुविधा (Setup)</a></li>
+                <li><a href="#departments">विभाग</a></li>
+                <li><a href="#appointment">अपॉइंटमेंट</a></li>
+                <li><a href="tel:108" class="emergency-btn">🚨 Emergency: 108</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero" id="home">
+<div class="hero-content">
+            <h1>तुमचे आरोग्य, आमची प्राथमिकता</h1>
+            <p>अत्याधुनिक तंत्रज्ञान आणि तज्ञ डॉक्टरांसह चोवीस तास सेवेमध्ये तत्पर.</p>
+            <a href="#appointment" class="cta-btn">अपॉइंटमेंट बुक करा</a>
+        </div>
+    </div>
+
+    <!-- Facilities & Setup Section -->
+    <section id="facilities">
+        <h2 class="section-title">हॉस्पिटल सुविधा आणि सेटअप (Facilities)</h2>
+        <div class="grid">
+            <!-- Facility 1 -->
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=500&q=80');"></div>
+                <div class="card-content">
+                    <h3>अत्याधुनिक ICU व ICCU</h3>
+                    <p>क्रिटिकल केअरसाठी २४ तास व्हेंटिलेटर आणि मल्टिपॅरा मॉनिटर्ससह सज्ज अतिदक्षता विभाग.</p>
+                </div>
+            </div>
+            <!-- Facility 2 -->
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1579684389782-64d84b5e905d?auto=format&fit=crop&w=500&q=80');"></div>
+                <div class="card-content">
+                    <h3>मॉड्युलर ऑपरेशन थिएटर (OT)</h3>
+                    <p>इन्फेक्शन-फ्री आणि प्रगत शस्त्रक्रियांसाठी सर्व प्रकारच्या आधुनिक उपकरणांनी सज्ज ओ.टी.</p>
+                </div>
+            </div>
+            <!-- Facility 3 -->
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=500&q=80');"></div>
+                <div class="card-content">
+                    <h3>डिजिटल डायग्नोस्टिक लॅब</h3>
+                    <p>मशिनरीद्वारे अचूक तपासणीसाठी X-Ray, CT Scan आणि पॅथॉलॉजी लॅबची इन-हाऊस सुविधा.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section id="departments" style="background-color: #fff;">
+        <h2 class="section-title">आमचे तज्ञ विभाग (Specialities)</h2>
+        <div class="grid">
+            <div class="card" style="box-shadow: none; border: 1px solid #eee;">
+                <div class="card-content">
+                    <h3>❤️ हृदयरोग विभाग (Cardiology)</h3>
+                    <p>हार्ट अटॅक आणि इतर हृदयविकारांवर तातडीने उपचार आणि अँजिओग्राफी सुविधा.</p>
+                </div>
+            </div>
+            <div class="card" style="box-shadow: none; border: 1px solid #eee;">
+                <div class="card-content">
+                    <h3>🦴 अस्थिरोग विभाग (Orthopedics)</h3>
+                    <p>फ्रॅक्चर, सांधेरोपण (Joint Replacement) आणि पाठीच्या कण्याच्या आजारांवर यशस्वी उपचार.</p>
+                </div>
+            </div>
+            <div class="card" style="box-shadow: none; border: 1px solid #eee;">
+                <div class="card-content">
+                    <h3>👶 बालरोग विभाग (Pediatrics)</h3>
+                    <p>नवजात बालकांपासून ते लहान मुलांच्या आरोग्याची आणि लसीकरणाची विशेष काळजी.</p>
+                </div>
+ </div>
+        </div>
+    </section>
+
+    <!-- Appointment Section -->
+    <section id="appointment">
+        <h2 class="section-title">ऑनलाईन अपॉइंटमेंट बुक करा</h2>
+        <div class="appointment-section">
+            <form action="#" onsubmit="alert('तुमची अपॉइंटमेंट यशस्वीरित्या नोंदवली गेली आहे!'); return false;">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">रुग्णाचे पूर्ण नांव (Patient Name)</label>
+                        <input type="text" id="name" required placeholder="उदा. राहुल पाटील">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">मोबाईल नंबर (Mobile No.)</label>
+                        <input type="tel" id="phone" required placeholder="उदा. 9876543210">
+                    </div>
+                    <div class="form-group">
+                        <label for="dept">विभाग निवडा (Select Department)</label>
+                        <select id="dept" required>
+                            <option value="">-- निवडा --</option>
+                            <option value="cardio">हृदयरोग विभाग</option>
+                            <option value="ortho">अस्थिरोग विभाग</option>
+                            <option value="pedia">बालरोग विभाग</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">तारीख निवडा (Date)</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <button type="submit" class="submit-btn">अपॉइंटमेंट निश्चित करा</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 स्वामिनी हॉस्पिटल. सर्व हक्क सुरक्षित. | पत्ता: मुख्य रस्ता, नागपूर, महाराष्ट्र.</p>
+    </footer>
+
+</body>
+</html>
