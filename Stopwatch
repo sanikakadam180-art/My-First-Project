@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class ConsoleStopwatch {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        long startTime = 0;
+        boolean running = false;
+
+        System.out.println("Type 'start' to begin and 'stop' to end.");
+
+        while (true) {
+            String input = scanner.next().toLowerCase();
+            if (input.equals("start") && !running) {
+                startTime = System.currentTimeMillis();
+                running = true;
+                System.out.println("Stopwatch started...");
+            } else if (input.equals("stop") && running) {
+                long endTime = System.currentTimeMillis();
+                long elapsed = (endTime - startTime) / 1000;
+                System.out.println("Stopped. Elapsed time: " + elapsed + " seconds.");
+                running = false;
+                break;
+            }
+        }
+        scanner.close();
+    }
+}
